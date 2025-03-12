@@ -1,4 +1,4 @@
-import pool from 'dist/connection.js';
+import { pool } from '../connection.js';
 
 // to add departments
 export const addDepartment = async (name: string) => {
@@ -22,3 +22,6 @@ export const updateEmployeeRole = async (role_id: number, employee_id: number) =
     const results = await pool.query(`UPDATE employee SET role_id = $1 WHERE id =$2 RETURNING *`, [role_id, employee_id]);
     return results.rows[0];
 };
+
+
+

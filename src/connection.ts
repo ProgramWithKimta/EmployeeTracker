@@ -6,7 +6,7 @@ dotenv.config();
 import pg from 'pg';
 const { Pool } = pg;
 
-const pool = new Pool({
+export const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   host: 'localhost',
@@ -14,7 +14,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-const connectToDb = async () => {
+export const connectToDb = async () => {
   try {
     await pool.connect();
     console.log('Connected to the database.');
@@ -24,4 +24,3 @@ const connectToDb = async () => {
   }
 };
 
-export default { pool, connectToDb };

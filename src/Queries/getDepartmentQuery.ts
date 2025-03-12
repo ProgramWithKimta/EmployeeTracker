@@ -1,4 +1,4 @@
-import pool from './connection.js';
+import { pool } from '../connection.js';
 
 // function to get departments table
 
@@ -11,3 +11,4 @@ export const getDepartments = async () => {
         throw err;
     }
 };
+

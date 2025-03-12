@@ -1,7 +1,7 @@
-import getDepartments from '/Queries/getDepartmentQuery.js';
-import getEmployees from '/Queries/getEmployeeQuery.js';
-import getRoles from '/Queries/getRoleQuery.js';
-import { addDepartment, addEmployee, addRole, updateEmployeeRole } from '/Queries/addValuesQuery.js';
+import { getDepartments } from './Queries/getDepartmentQuery.js';
+import { getEmployees } from './Queries/getEmployeeQuery.js';
+import { getRoles } from './Queries/getRoleQuery.js';
+import { addDepartment, addEmployee, addRole, updateEmployeeRole } from './Queries/addValuesQuery.js';
 import inquirer from 'inquirer';
 
 const landingPage = async () => {
@@ -125,3 +125,5 @@ const landingPage = async () => {
 
     await landingPage();
 };
+
+landingPage();
