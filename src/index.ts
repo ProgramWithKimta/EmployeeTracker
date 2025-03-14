@@ -3,6 +3,7 @@ import { getEmployees } from './Queries/getEmployeeQuery.js';
 import { getRoles } from './Queries/getRoleQuery.js';
 import { addDepartment, addEmployee, addRole, updateEmployeeRole } from './Queries/addValuesQuery.js';
 import inquirer from 'inquirer';
+import { default as choices, VIEW_ALL_EMPLOYEES, UPDATE_EMPLOYEE_ROLE, ADD_ROLE, ADD_DEPARTMENT, VIEW_ALL_ROLES, VIEW_ALL_DEPARTMENTS, EXIT, ADD_EMPLOYEE } from './choices.js'
 
 const landingPage = async () => {
     const answers = await inquirer.prompt([
@@ -10,26 +11,17 @@ const landingPage = async () => {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: [
-                'View All Employees',
-                'Add Employee',
-                'View All Roles',
-                'Add Role',
-                'View all Departments',
-                'Add Department',
-                'Update Employee Role',
-                'Exit'
-            ],
+            choices: choices,
         },
     ]);
 
     switch (answers.action) {
-        case 'View all Employees':
+        case VIEW_ALL_EMPLOYEES:
             const viewEmployees = await getEmployees();
             console.table(viewEmployees);
             break;
 
-        case 'Add an employee':
+        case ADD_EMPLOYEE:
             const addEmpAnswer = await inquirer.prompt([
                 {
                     type: 'input',
@@ -56,7 +48,7 @@ const landingPage = async () => {
             console.log(`New Employee added: ${newEmp.first_name} ${newEmp.last_name}`);
             break;
 
-        case 'Update Employee Role':
+        case UPDATE_EMPLOYEE_ROLE:
             const updateEmpRole = await inquirer.prompt([
                 {
                     type: 'input',
@@ -73,12 +65,12 @@ const landingPage = async () => {
             console.log(`Employee Role Updated: ${editEmployeeRole.employee_id}`);
             break;
 
-        case 'View all roles':
+        case VIEW_ALL_ROLES:
             const viewRoles = await getRoles();
             console.table(viewRoles);
             break;
 
-        case 'Add Role':
+        case ADD_ROLE:
             const newRoleAnswers = await inquirer.prompt([
                 {
                     type: 'input',
@@ -100,12 +92,12 @@ const landingPage = async () => {
             console.log(`New Role Added: ${newRole.title}`);
             break;
 
-        case 'View all Departments':
+        case VIEW_ALL_DEPARTMENTS:
             const viewDepartments = await getDepartments();
             console.table(viewDepartments);
             break;
 
-        case 'Add Department':
+        case ADD_DEPARTMENT:
             const newDeptAnswers = await inquirer.prompt([
                 {
                     type: 'input',
@@ -117,7 +109,7 @@ const landingPage = async () => {
             console.log(`New Department Added: ${newDept.name}`);
             break;
 
-        case 'Exit':
+        case EXIT:
             process.exit();
         default:
             await landingPage();

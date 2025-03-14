@@ -10,10 +10,11 @@ export const getEmployees = async () => {
                 role.title, 
                 department.name, 
                 role.salary, 
-                employee.manager_id 
+                CONCAT_WS (' ', managers.first_name, managers.last_name) AS manager_name
             FROM employee 
-            JOIN role ON employee.role_id = role_id 
-            JOIN department ON role.department_id = department_id
+            JOIN role ON employee.role_id = role.id 
+            JOIN department ON role.department_id = department.id
+            JOIN employee managers ON employee.manager_id = managers.id
             `);
         return results.rows;
         } catch (error) {
