@@ -33,7 +33,7 @@ This project is licensed under ISC
 
 Questions? Contact Me! [knguyen@gmail.com](mailto:knguyen@gmail.com)
 
-Link to the walkthrough video: https://drive.google.com/file/d/1JoB4fSp4U2SMFNsJypk0I3iq4a733ZvV/view
+Link to the walkthrough video: https://drive.google.com/file/d/1T9-7F1LSTBcerhEKKUV98reTBoYMvv67/view
 
 ## References
 Tutoring with Ainsley
